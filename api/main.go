@@ -20,7 +20,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = ":8000"
+		port = "8000"
 	}
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"*"} // Adjust this based on your needs
@@ -30,5 +30,5 @@ func main() {
 	router.Use(cors.New(config))
 	routes.ResRoutes(router)
 	routes.ShortRoutes(router)
-	router.Run(port)
+	router.Run(":"+port)
 }
