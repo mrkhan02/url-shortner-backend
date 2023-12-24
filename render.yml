@@ -1,0 +1,11 @@
+services:
+  - name: api
+    buildCommand: docker build -t api-image -f api/Dockerfile .
+    startCommand: docker run -p 8000:8000 api-image
+    envVars:
+      - key: DATABASE_URL
+        value: redis://db:6379
+
+  - name: db
+    buildCommand: docker build -t db-image -f db/Dockerfile .
+    startCommand: docker run -p 6379:6379 db-image
