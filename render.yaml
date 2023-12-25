@@ -1,6 +1,6 @@
 services:
   - name: api
-    type: build  # Specify the type here
+    type: web  # Specify the type here
     buildCommand: docker build -t api-image -f api/Dockerfile .
     startCommand: docker run -p 8000:8000 api-image
     envVars:
@@ -8,6 +8,6 @@ services:
         value: redis://db:6379
 
   - name: db
-    type: build  # Specify the type here
+    type: redis  # Specify the type here
     buildCommand: docker build -t db-image -f db/Dockerfile .
     startCommand: docker run -p 6379:6379 db-image
